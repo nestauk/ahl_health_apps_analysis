@@ -39,7 +39,7 @@ apps_to_explore  = [
 
 
 
-app_ids = search_list(general_search,30) + search_list(apps_to_explore)
+app_ids = search_apps(general_search,30) + search_apps(apps_to_explore)
 
 
 
