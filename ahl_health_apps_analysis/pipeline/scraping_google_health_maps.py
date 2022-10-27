@@ -10,7 +10,8 @@ general_search = [
 'well_being', 
 'nutrition', 
 'diet', 
-'healthy eating']
+'healthy eating',
+'Uber Eats']
 
 apps_to_explore  = [
 'Headspace',
@@ -45,7 +46,7 @@ app_ids = search_apps(general_search,30) + search_apps(apps_to_explore)
 
 '''Looks for similar apps many times over returned in variable named app_details_set'''
 app_details_set = set()
-for x in tqdm(app_ids[:1]):
+for x in tqdm(app_ids):
     logging.info(f"Getting apps related to {x}")
     related_apps = app_snowball(x)
     if related_apps:
@@ -54,7 +55,7 @@ for x in tqdm(app_ids[:1]):
 
 app_details_df = load_all_app_ids(app_details_set)
 
-app_details_df.to_csv('inputs/data/app_ids_list_5.csv')
+app_details_df.to_csv('inputs/data/app_ids_list_26-10.csv')
 
 
 

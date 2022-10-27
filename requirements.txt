@@ -1,15 +1,16 @@
-numpy==1.22
+numpy==1.20.0
 scipy
-pandas
+pandas==1.4.4
 matplotlib
 altair
 tqdm
 filelock
 typer
 sh
+jupyter
 openpyxl
 sentence-transformers
-umap-learn -i https://mirrors.ustc.edu.cn/pypi/web/simple
+umap-learn==0.3.10
 hdbscan
 seaborn
 nltk
