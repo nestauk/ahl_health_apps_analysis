@@ -4,58 +4,63 @@ from ahl_health_apps_analysis.utils.scraping_google_health_maps_utils import *
 from tqdm import tqdm
 import logging
 
+print('insert the date: ')
+date = input()
+
 general_search = [
 'health', 
 'fitness', 
-'well_being', 
+'well being', 
 'nutrition', 
 'diet', 
 'healthy eating',
-'Uber Eats']
+'take away',
+'giving up smoking',
+'giving up drinking',
+'cook books',
+'exercise']
 
-apps_to_explore  = [
-'Headspace',
-'MyFitnessPal',
-'HealthTap',
-'Noom',
-'Strava',
-'Calm',
-'Fitbit',
-'Stretching Exercises - Flexibility',
-'Insight Timer',
-'Nike Running App',
-'Nike Training Club',
-'Runna',
-'Apple health app', 
-'Google fit',
-'ZOE',
-'Clue',
-'Oura',
-'WW app',
-'Polar Flow',
-'Down Dog',
-'Balance',
-'Fiton',
-'Peloton']
+apps_to_explore_ids  = [
+'com.getsomeheadspace.android',
+'com.myfitnesspal.android',
+'com.heytap.health.international',
+'com.wsl.noom',
+'com.strava',
+'com.calm.android',
+'com.fitbit.FitbitMobile',
+'stretching.stretch.exercises.back',
+'com.spotlightsix.zentimerlite2',
+'com.nike.plusgps',
+'com.nike.ntc',
+'com.runbuddy.prod',
+'com.google.android.apps.fitness', 
+'com.google.android.apps.fitness',
+'com.joinzoe.results',
+'com.ouraring.oura',
+'com.weightwatchers.mobile',
+'fi.polar.beat',
+'com.downdogapp',
+'com.balance_app.app',
+'com.fiton.android',
+'com.onepeloton.callisto']
 
+if __name__ == "__main__":
 
-
-app_ids = search_apps(general_search,30) + search_apps(apps_to_explore)
-
-
-
-'''Looks for similar apps many times over returned in variable named app_details_set'''
-app_details_set = set()
-for x in tqdm(app_ids):
-    logging.info(f"Getting apps related to {x}")
-    related_apps = app_snowball(x)
-    if related_apps:
-        app_details_set.update(set(related_apps))
+	app_ids = search_apps(general_search) + apps_to_explore_ids
 
 
-app_details_df = load_all_app_ids(app_details_set)
+	'''Looks for similar apps many times over returned in variable named app_details_set'''
+	app_details_set = set()
+	for x in tqdm(app_ids[:1]):
+		logging.info(f"Getting apps related to {x}")
+		related_apps = app_snowball(x)
+		if related_apps:
+			app_details_set.update(set(related_apps))
 
-app_details_df.to_csv('inputs/data/app_ids_list_26-10.csv')
+
+	app_details_df = get_app_info(app_details_set)
+
+	app_details_df.to_csv(f'inputs/data/app_ids_list_{date}.csv')
 
 
 

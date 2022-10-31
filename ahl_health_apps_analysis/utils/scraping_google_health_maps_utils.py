@@ -7,9 +7,9 @@ from tqdm import tqdm
 
 
 
-def search_apps(search_list, n_hits = 5):
+def search_apps(search_term_list, n_hits = 5):
 
-    '''Input list of apps, returns default of 5 similar apps from each list, this can be altered but the maximum n_hits is 30'''
+    '''Input list of app names, defaulted to return the top 5 apps from each search name in list, this can be altered but the maximum n_hits is 30'''
 
     app_ids = []
     for search_name in search_list:
@@ -24,10 +24,9 @@ def search_apps(search_list, n_hits = 5):
 
 
 
-def load_all_app_ids(app_ids) -> set:
+def get_app_info(app_ids) -> set:
     """
-    Loads the saved ids of all apps and returns them in a set:
-    Takes no arguments; returns a single set.
+    Gets app information for a list of app ids
     """
     app_ids_df = []
     number_errors = 0
