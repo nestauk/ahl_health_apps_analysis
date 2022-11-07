@@ -3,9 +3,9 @@ from ahl_health_apps_analysis.utils.scraping_google_health_maps_utils import *
 
 from tqdm import tqdm
 import logging
+from datetime import date
 
-print('insert the date: ')
-date = input()
+date = date.today()
 
 general_search = [
 'health', 
@@ -48,19 +48,18 @@ if __name__ == "__main__":
 
 	app_ids = search_apps(general_search) + apps_to_explore_ids
 
-
-	'''Looks for similar apps many times over returned in variable named app_details_set'''
-	app_details_set = set()
-	for x in tqdm(app_ids[:1]):
+	'''Looks for similar apps many times over returned in variable named app_ids_set'''
+	app_ids_set = set()
+	for x in tqdm(app_ids):
 		logging.info(f"Getting apps related to {x}")
 		related_apps = app_snowball(x)
 		if related_apps:
-			app_details_set.update(set(related_apps))
+			app_ids_set.update(set(related_apps))
 
 
-	app_details_df = get_app_info(app_details_set)
+	app_details_df = get_app_info(app_ids_set)
 
-	app_details_df.to_csv(f'inputs/data/app_ids_list_{date}.csv')
+	app_details_df.to_csv(f'inputs/data/app-ids-info-{date}.csv')
 
 
 

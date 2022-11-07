@@ -3,8 +3,9 @@ from ahl_health_apps_analysis.utils.preprocessing_utils import *
 import pandas as pd
 
 if __name__ == "__main__":
-	details = pd.read_csv('inputs/data/app_ids_list_27-10.csv')
-
+	'''date in format YYYY-MM-DD'''
+	date = '2022-11-04'
+	details = pd.read_csv(f'inputs/data/app-ids-info-{date}.csv')
 
 	details['description'] = details['descriptionHTML']
 	details.drop(columns = 'descriptionHTML')
@@ -21,7 +22,11 @@ if __name__ == "__main__":
 	#step 4 - replace html tags with space
 	details['description'] = details['description'].apply(lambda x:remove_html_flags(x))
 
+	#step 5 - filtering by relevent apps to health
+	details = details[(details['genre'] == 'Health & Fitness') | (details['genre'] == 'Food & Drink') | (details['genre'] == 'Medical') | (details['genre'] == 'Sports')].reset_index()
+	
 
 
-	details.to_csv('outputs/data/preprocessed_description_27-10.csv')
+
+	details.to_csv(f'outputs/data/preprocessed-description-{date}.csv')
 

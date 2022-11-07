@@ -7,6 +7,8 @@
 - Run `make install` to configure the development environment:
   - Setup the conda environment
   - Configure `pre-commit`
+  - Run `pip install git+https://github.com/JoMingyu/google-play-scraper.git@c9958d6e77823af2e3cbe877308cb18185d0df99`
+  - Run `export PYTHONPATH=$PWD` on root directory 
 
 ## Contributor guidelines
 
