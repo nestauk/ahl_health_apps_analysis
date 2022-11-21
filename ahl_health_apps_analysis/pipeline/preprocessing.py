@@ -10,7 +10,7 @@ if __name__ == "__main__":
 	details['description'] = details['descriptionHTML']
 	details.drop(columns = 'descriptionHTML')
 
-	# step 1 - replace with space
+	# step 1 - drop nulls
 	details.dropna(subset = 'description', inplace= True)
 
 	# step 2 - replace with space

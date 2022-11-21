@@ -18,7 +18,8 @@ general_search = [
 'giving up smoking',
 'giving up drinking',
 'cook books',
-'exercise']
+'exercise',
+'loneliness']
 
 apps_to_explore_ids  = [
 'com.getsomeheadspace.android',
