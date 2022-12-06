@@ -7,3 +7,4 @@
 4. Choose cluster type:
 	- Cluster app details using hdbscan clustering (ahl_health_apps_analysis/pipeline/cluster.p --cluster_type hdbscan)
 	- Cluster app details using kmeans clustering (ahl_health_apps_analysis/pipeline/cluster.p --cluster_type kmeans)
+	5. When cluster_type is kmeans choose the number of cluster_types required (ahl_health_apps_analysis/pipeline/cluster.p --cluster_type kmeans --n_cluster 15)
