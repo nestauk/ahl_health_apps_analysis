@@ -18,7 +18,8 @@ general_search = [
 'giving up smoking',
 'giving up drinking',
 'cook books',
-'exercise']
+'exercise',
+'loneliness']
 
 apps_to_explore_ids  = [
 'com.getsomeheadspace.android',
@@ -42,7 +43,16 @@ apps_to_explore_ids  = [
 'com.downdogapp',
 'com.balance_app.app',
 'com.fiton.android',
-'com.onepeloton.callisto']
+'com.onepeloton.callisto',
+'com.getsomeheadspace.android',
+'com.fitplanapp.fitplan',
+'com.northcube.sleepcycle',
+'com.aaptiv.android',
+'com.charitymilescm.android',
+'Fooducate – Eat better. Lose weight. Get healthy',
+'com.eightfit.app',
+'com.happify.happifyinc',
+'com.fitbit.FitbitMobile']
 
 if __name__ == "__main__":
 
