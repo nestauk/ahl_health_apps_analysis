@@ -80,7 +80,7 @@ drop_list = ['com.castlighthealth.returntowork',
 
 # drop apps in drop_list 
 for app in drop_list:
-    app_details = app_details[app_details.appId != app]
+	app_details = app_details[app_details.appId != app]
 
 '''Refining clusters and renaming cluster_names'''
 #re-cluster 0 to 20 and rename cluster 
@@ -97,14 +97,14 @@ app_details =app_details.replace({'cluster_names':'keto-recipes'}, 'Weight Loss/
 
 # Workout: cluster 2,5,12,14,15
 app_details =app_details.replace({'cluster_names':['training-workouts', 
-                                 'walking-training', 
-                                 'fitness-workouts', 
-                                 'workouts-fitness',
-                                 'workout-classes']},'Workout')
+								 'walking-training', 
+								 'fitness-workouts', 
+								 'workouts-fitness',
+								 'workout-classes']},'Workout')
 # Mental Health: cluster 3,13,16
 app_details =app_details.replace({'cluster_names':['therapy-anxiety', 
-                                 'health-mental', 
-                                 'minapp_detailsulness-meditations']},'Mental Health')
+								 'health-mental', 
+								 'mindfulness-meditations']},'Mental Health')
 
 app_details =app_details.replace({'cluster_names':'players-tennis'}, 'Improve Sports Performance and Sports Network')
 
@@ -127,8 +127,8 @@ cluster_names_list = app_details['cluster_names'].unique().tolist()
 
 cluster_names_mapping={}
 for cluster_name,i in enumerate(cluster_names_list):
-    cluster_names_mapping[i] = cluster_name
-    
+	cluster_names_mapping[i] = cluster_name
+	
 app_details['cluster'] = app_details['cluster_names'].map(cluster_names_mapping)
 
 # 
@@ -140,13 +140,14 @@ app_details['daily_installs'] = app_details['realInstalls']/app_details['app_dur
 app_details = app_details.drop(columns = 'app_duration')
 app_details['total_apps_per_cluster'] = app_details.groupby('cluster_names')['appId'].transform('count')
 app_details['year'] = pd.to_datetime(app_details['released']).dt.year
+app_details = app_details.sort_values('released', ascending = False).drop_duplicates('title', keep='first')
 
 
 #plotting
 fig = configure_plots(
-    alt.Chart(app_details.reset_index(), width=725, height=725)
-    .mark_circle(size=60)
-    .encode(x="x", y="y", tooltip=["cluster_names", "appId", "summary", 'description'], color="cluster_names:N")
+	alt.Chart(app_details.reset_index(), width=725, height=725)
+	.mark_circle(size=60)
+	.encode(x="x", y="y", tooltip=["cluster_names", "appId", "summary", 'description'], color="cluster_names:N")
 ).interactive()
 
 # save pandas and fig
