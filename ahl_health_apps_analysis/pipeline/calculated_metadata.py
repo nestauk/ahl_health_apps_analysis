@@ -4,8 +4,9 @@ import numpy as np
 
 date = ('2022-11-28')
 clusters = 20
+cluster_type = kmeans
 
-app_details = pd.read_csv(f'outputs/data/{date}-kmeans-{clusters}-refined.csv')
+app_details = pd.read_csv(f'outputs/data/{date}-{cluster_type}-{clusters}-refined.csv')
 
 
 
@@ -46,7 +47,7 @@ app_details_release_joined.rename(columns = {'released_x': '2019','released_y':'
 diff_released = app_details_release_joined['2021'] - app_details_release_joined['2019']
 app_details_release_joined['percentage_diff'] = diff_released/app_details_release_joined['2019']*100
 
-app_details_ratings.to_csv(f'outputs/data/{date}-kmeans-{clusters}-app_details_ratings.csv')
-app_details_price.to_csv(f'outputs/data/{date}-kmeans-{clusters}-app_details_price.csv')
-app_details_installations_joined.to_csv(f'outputs/data/{date}-kmeans-{clusters}-app_details_installations.csv')
-app_details_release_joined.to_csv(f'outputs/data/{date}-kmeans-{clusters}-app_details_release.csv')
+app_details_ratings.to_csv(f'outputs/data/{date}-{cluster_type}-{clusters}-app_details_ratings.csv')
+app_details_price.to_csv(f'outputs/data/{date}-{cluster_type}-{clusters}-app_details_price.csv')
+app_details_installations_joined.to_csv(f'outputs/data/{date}-{cluster_type}-{clusters}-app_details_installations.csv')
+app_details_release_joined.to_csv(f'outputs/data/{date}-{cluster_type}-{clusters}-app_details_release.csv')

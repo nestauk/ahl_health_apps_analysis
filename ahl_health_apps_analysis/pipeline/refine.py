@@ -10,7 +10,9 @@ from ahl_health_apps_analysis.analysis.plotting import configure_plots
 
 date = ('2022-11-28')
 clusters = 20
-app_details = pd.read_csv(f'outputs/data/{date}-kmeans-{clusters}-cluster.csv')
+cluster_type = kmeans
+
+app_details = pd.read_csv(f'outputs/data/{date}-{cluster_type}-{clusters}-cluster.csv')
 
 re_cluster0 = ['com.bm.android.thermometer',
  'com.contraction.kicks',
@@ -151,7 +153,7 @@ fig = configure_plots(
 ).interactive()
 
 # save pandas and fig
-app_details.to_csv(f'outputs/data/{date}-kmeans-{clusters}-refined.csv') 
-fig.save(f'outputs/data/{date}-kmeans-{clusters}-refined.html')
+app_details.to_csv(f'outputs/data/{date}-{cluster_type}-{clusters}-refined.csv') 
+fig.save(f'outputs/data/{date}-{cluster_type}-{clusters}-refined.html')
 
 
