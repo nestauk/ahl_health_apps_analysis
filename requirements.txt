@@ -18,3 +18,4 @@ beautifulsoup4
 lxml
 joblib==1.1.0
 textblob
+streamlit
