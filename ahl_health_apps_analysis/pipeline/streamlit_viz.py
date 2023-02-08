@@ -42,7 +42,7 @@ st.write(f'Number of apps : {len(selected_data)}')
 fig = alt.Chart(selected_data.reset_index(), width=725, height=725).mark_circle(size=60).encode(
 	x=alt.X("x", axis=alt.Axis(labels=False, grid=False), title="x"), 
 	y=alt.Y("y", axis=alt.Axis(labels=False, grid=False), title="y"), 
-	tooltip=[alt.Tooltip("title", title = "Title"), alt.Tooltip("summary", title = "Summary"), alt.Tooltip("realInstalls", title = 'Number of Installs'), alt.Tooltip("score", title = 'Average App Rating')],
+	tooltip=[alt.Tooltip("title"), alt.Tooltip("summary", title = "Summary"), alt.Tooltip("realInstalls", title = 'Number of Installs'), alt.Tooltip("score", title = 'Average App Rating'), alt.Tooltip("developer", title = 'Developer')],
 	color=alt.Color(
             "cluster_names",
             scale=alt.Scale(
@@ -56,7 +56,7 @@ fig = alt.Chart(selected_data.reset_index(), width=725, height=725).mark_circle(
 fig2 = alt.Chart(selected_app_data.reset_index()).mark_circle(size=300, color='red').encode(
 	x="x", 
 	y="y", 
-	tooltip=[alt.Tooltip("title", title = "Title"), alt.Tooltip("summary", title = "Summary"), alt.Tooltip("realInstalls", title = 'Number of Installs'), alt.Tooltip("score", title = 'Average App Rating')])
+	tooltip=[alt.Tooltip("title"), alt.Tooltip("summary", title = "Summary"), alt.Tooltip("realInstalls", title = 'Number of Installs'), alt.Tooltip("score", title = 'Average App Rating'), alt.Tooltip("developer", title = 'Developer')])
 
 st.altair_chart(configure_plots(fig + fig2), use_container_width=True)
 
