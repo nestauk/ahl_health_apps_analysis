@@ -1,12 +1,12 @@
 import streamlit as st
 import altair as alt
 import pandas as pd
-from ahl_health_apps_analysis.analysis.plotting import configure_plots
+from ahl_health_apps_analysis.pipeline.streamlit_plotting import configure_plots
 
 date = ('2022-11-28')
 clusters = 20
 
-data = pd.read_csv(f'outputs/data/{date}-kmeans-{clusters}-refined.csv') 
+data = pd.read_csv(f'ahl_health_apps_analysis/pipeline/{date}-kmeans-{clusters}-refined-streamlit.csv') 
 
 similar_sectors_colors = {'Improve Sports Performance and Sports Network':"#0000FF",
 'Cycle Tracker': "#FDB633",
