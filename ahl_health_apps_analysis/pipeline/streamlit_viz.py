@@ -3,13 +3,17 @@ import altair as alt
 import pandas as pd
 from streamlit_plotting import configure_plots
 
-with open("style.css") as css:
+import os
+
+parent_dir = 'ahl_health_apps_analysis/pipeline/'
+
+with open(os.path.join(parent_dir, "style.css")) as css:
     st.markdown(f"<style>{css.read()}</style>", unsafe_allow_html=True)
 
 date = ('2022-11-28')
 clusters = 20
 
-data = pd.read_csv(f'{date}-kmeans-{clusters}-refined-streamlit.csv') 
+data = pd.read_csv(os.path.join(parent_dir, f'{date}-kmeans-{clusters}-refined-streamlit.csv'))
 
 similar_sectors_colors = {
 'Hydration Reminder':"#0F294A",
