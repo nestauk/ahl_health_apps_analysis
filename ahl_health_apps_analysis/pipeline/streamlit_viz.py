@@ -6,7 +6,7 @@ from streamlit_plotting import configure_plots
 date = ('2022-11-28')
 clusters = 20
 
-data = pd.read_csv(f'ahl_health_apps_analysis/pipeline/{date}-kmeans-{clusters}-refined-streamlit.csv') 
+data = pd.read_csv(f'{date}-kmeans-{clusters}-refined-streamlit.csv') 
 
 similar_sectors_colors = {'Improve Sports Performance and Sports Network':"#0000FF",
 'Cycle Tracker': "#FDB633",
