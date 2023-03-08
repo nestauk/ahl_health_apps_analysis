@@ -1,7 +1,7 @@
 import streamlit as st
 import altair as alt
 import pandas as pd
-from ahl_health_apps_analysis.pipeline.streamlit_plotting import configure_plots
+from streamlit_plotting import configure_plots
 
 date = ('2022-11-28')
 clusters = 20
