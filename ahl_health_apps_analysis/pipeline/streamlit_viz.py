@@ -31,7 +31,7 @@ st.markdown(original_title, unsafe_allow_html=True)
 st.write('From mindfulness to diet tracking, health apps have the potential to help people lead healthier lives. To find out which healthy living areas are represented in the apps space we have created a dataset of health apps from the Google Play Store and used natural language processing (NLP) techniques to plot the apps in 2D space and cluster them into 15 themes. This plot will allow you to investigate these apps, where the closer two apps are shown on the plot the more similar their descriptions are. The repo for Mapping Health Apps exists can be found [here](https://github.com/nestauk/ahl_health_apps_analysis).')
 
 cluster_selected = st.multiselect("Select cluster", data['cluster_names'].unique(),default = data['cluster_names'].unique())
-selected_data = data[data['cluster_names'].isin(cluster_selected)]
+selected_dat = data[data['cluster_names'].isin(cluster_selected)]
 
 app_selected = st.selectbox("Select app", selected_data['title'].unique())
 selected_app_data = selected_data[selected_data['title']==app_selected] 
