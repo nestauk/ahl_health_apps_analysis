@@ -13,7 +13,7 @@ with open(os.path.join(parent_dir, "style.css")) as css:
 date = ('2022-11-28')
 clusters = 20
 
-data = pd.read_csv(os.path.join(parent_dir, f'{date}-kmeans-{clusters}-refined-streamlit.csv'))
+data = pd.read_csv(os.path.join(parent_dir, f'{date}-kmeans-{clusters}-refined-streamlit.csv')).rename(columns = {'icon':'image'})
 
 similar_sectors_colors = {
 'Hydration Reminder':"#0F294A",
@@ -40,7 +40,7 @@ st.markdown(original_title, unsafe_allow_html=True)
 st.write("""
 	From mindfulness to diet tracking, health apps have the potential to help people lead healthier lives. To find out which healthy living areas are represented in the apps space we have created a dataset of health apps from the Google Play Store and used natural language processing (NLP) techniques to analyse these apps.
 
-	The apps are plotted in 2D space and clustered into 15 themes. This plot will allow you to investigate these apps, where the closer two apps are shown on the plot the more similar their descriptions are. The Github repo for Mapping Health Apps exists can be found [here](https://github.com/nestauk/ahl_health_apps_analysis).
+	The apps are plotted in 2D space and clustered into 15 themes. This plot will allow you to investigate these apps, where the closer two apps are shown on the plot the more similar their descriptions are. The Github repo for Mapping Health Apps can be found [here](https://github.com/nestauk/ahl_health_apps_analysis).
 	"""
 	)
 
@@ -56,7 +56,7 @@ st.write(f'Number of apps : {len(selected_data)}')
 fig = alt.Chart(selected_data.reset_index(), width=725, height=725).mark_circle(size=60).encode(
 	x=alt.X("x", axis=alt.Axis(labels=False, grid=False), title=None), 
 	y=alt.Y("y", axis=alt.Axis(labels=False, grid=False), title=None), 
-	tooltip=[alt.Tooltip("title"), alt.Tooltip("summary", title = "Summary"), alt.Tooltip("realInstalls", title = 'Number of Installs'), alt.Tooltip("score", title = 'Average App Rating', format='.2f'), alt.Tooltip("developer", title = 'Developer')],
+	tooltip=[alt.Tooltip("title"), alt.Tooltip("image"), alt.Tooltip("summary", title = "Summary"), alt.Tooltip("realInstalls", title = 'Number of Installs'), alt.Tooltip("score", title = 'Average App Rating', format='.2f'), alt.Tooltip("developer", title = 'Developer')],
 	color=alt.Color(
             "cluster_names",
             scale=alt.Scale(
@@ -70,7 +70,7 @@ fig = alt.Chart(selected_data.reset_index(), width=725, height=725).mark_circle(
 fig2 = alt.Chart(selected_app_data.reset_index()).mark_circle(size=300, color='red').encode(
 	x="x", 
 	y="y", 
-	tooltip=[alt.Tooltip("title"), alt.Tooltip("summary", title = "Summary"), alt.Tooltip("realInstalls", title = 'Number of Installs'), alt.Tooltip("score", title = 'Average App Rating'), alt.Tooltip("developer", title = 'Developer')])
+	tooltip=[alt.Tooltip("title"), alt.Tooltip("image"), alt.Tooltip("summary", title = "Summary"), alt.Tooltip("realInstalls", title = 'Number of Installs'), alt.Tooltip("score", title = 'Average App Rating'), alt.Tooltip("developer", title = 'Developer')])
 
 st.altair_chart(configure_plots(fig + fig2), use_container_width=True)
 
