@@ -2,7 +2,7 @@ numpy==1.20.0
 scipy
 pandas==1.4.4
 matplotlib
-altair
+altair<5
 tqdm
 filelock
 typer
